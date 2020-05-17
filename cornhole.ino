@@ -1,12 +1,16 @@
-#define BUTTON_PIN  2
+#include "Button.hpp"
 
+#define BAUD        115200
+
+#define PIN_BUTTON  2
+
+Button button(PIN_BUTTON);
 
 void setup() {
-  // put your setup code here, to run once:
-  pinMode(BUTTON_PIN, INPUT_PULLUP);
+  Serial.begin(BAUD);
+  while (!Serial) {}
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-  
+  button.update();
 }
