@@ -11,7 +11,7 @@
 
 class Button {
   public:
-    Button(int pin);
+    Button(int pin, void (*shortHoldCallback)(void), void (*longHoldCallback)(void));
 
     void        update(void);
   
@@ -20,6 +20,8 @@ class Button {
     int         _prevButtonState;
     uint32_t    _holdStart;
     bool        _isHeld;
+    void        (*_shortHoldCallback)(void);
+    void        (*_longHoldCallback)(void);
 
     void        _checkHold(bool isReleased);
 
